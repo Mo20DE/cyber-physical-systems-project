@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jun 16 09:22:58 CEST 2022
+https\://repo.maven.apache.org/maven2/.lastUpdated=1655364178888
+http\://0.0.0.0/.error=Could not transfer artifact org.rxtx\:rxtx-native\:pom\:2.2 from/to maven-default-http-blocker (http\://0.0.0.0/)\: Blocked mirror for repositories\: [digi-repo (http\://ftp1.digi.com/support/m-repo/, default, releases)]
+@default-maven-default-http-blocker-http\://0.0.0.0/.lastUpdated=1654768058483
+https\://repo.maven.apache.org/maven2/.error=
+http\://ftp1.digi.com/support/m-repo/.lastUpdated=1654767063090

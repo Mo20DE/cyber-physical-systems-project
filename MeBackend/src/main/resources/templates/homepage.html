@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Arduino ME Project</title>
+
+    <!-- load CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="css/homepage.css">
+    <!-- Templatemo style -->
+</head>
+
+<body>
+<div class="row">
+    <div class="col-lg-12">
+        <header class="text-center tm-site-header">
+            <div class="tm-site-logo"></div>
+            <h1 class="pl-4 tm-site-title">Arduino ME</h1>
+        </header>
+    </div>
+</div>
+
+<h2 class="overlay" id="availability" style="color:red ">Me ist abwesend</h2></br>
+
+<h2 style="margin-left: auto; margin-right: auto;">Manuelle Events</h2>
+<table style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <th>
+            <h3>Wecker stellen</h3>
+            <input type="time" id="appt" name="appt">
+            <button id="AlarmStarten" class="aktiveButtons" onclick="">Senden</button>
+        </th>
+        <th>
+            <h3>Fahrsteuerung</h3>
+            <div style="padding-top: 10px;padding-left: 28px;">
+                <button id="Up" class="aktiveButtons">Vorwärts</button>
+            </div>
+            <div style="padding-top: 10px; padding-bottom: 10px;">
+                <button id="Left" class="aktiveButtons">Links</button>
+                <button id="Right" class="aktiveButtons">Rechts</button>
+            </div>
+            <div style="padding-bottom: 10px; padding-left: 22px;">
+                <button id="Down" class="aktiveButtons">Rückwärts</button>
+            </div>
+        </th>
+        <th>
+            <h3>Bildschirm anzeigen</h3>
+            <button id="DisplayMonopolyMan" class="aktiveButtons" onclick="">Monopoly-Man</button>
+            <button id="DisplayAlpaca" class="aktiveButtons" onclick="">Alpaka</button>
+            <button id="DisplayPanda" class="aktiveButtons" onclick="">Panda</button>
+        </th>
+        <th>
+            <h3>Sound abspielen</h3>
+            <button id="PlayPinkPanther" class="aktiveButtons" onclick="">Pink Panther</button>
+            <button id="PlayStarWars" class="aktiveButtons" onclick="">Star Wars</button>
+        </th>
+    </tr>
+</table>
+
+<div class="table-sensor-data">
+    <h2>Sensordaten</h2>
+    <button id="tempSensor" class="aktiveButtons" onclick="changeColor(id),tableErase()">Temperatur</button>
+    <button id="lichtSensor" class="aktiveButtons" onclick="changeColor(id),tableErase()">LichtSensor</button>
+    <button id="abstandSensor" class="aktiveButtons" onclick="changeColor(id),tableErase()">Ultrarange</button>
+    <div class="hilfeTabelle">
+        <table class="table table-dark table-striped" id="sensorDaten">
+            <thead>
+            <tr>
+                <th scope="col">Zeit</th>
+                <th scope="col">Temperatur</th>
+                <th scope="col">Luftfeuchtigkeit</th>
+                <th scope="col">Distanz</th>
+                <th scope="col">UV</th>
+                <th scope="col">Sichtbares Licht</th>
+                <th scope="col">Infarot</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sensorData : ${sensorDataList}">
+                <td th:text="${sensorData.timestamp}"></td>
+                <td th:text="${sensorData.temperature}"></td>
+                <td th:text="${sensorData.humidity}"></td>
+                <td th:text="${sensorData.distance}"></td>
+                <td th:text="${sensorData.ultravioletLight}"></td>
+                <td th:text="${sensorData.visibleLight}"></td>
+                <td th:text="${sensorData.infraredLight}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <div style="padding-top: 50px; padding-bottom: 50px;">
+        <button id="akt1" class="inactiveGraphButtons" onclick="toggleGraph(id),createGraphs(temperatur)">Temperatur</button>
+        <button id="akt2" class="inactiveGraphButtons" onclick="toggleGraph(id),createGraphs(luft)">Luftfeuchtigkeit</button>
+        <button id="akt3" class="inactiveGraphButtons" onclick="toggleGraph(id),createGraphs(abstand)">Distanz</button>
+        <button id="akt4" class="inactiveGraphButtons" onclick="toggleGraph(id),createGraphs(uv)">Ultraviolet</button>
+        <button id="akt5" class="inactiveGraphButtons" onclick="toggleGraph(id),createGraphs(vis)">VIS</button>
+        <button id="akt6" class="inactiveGraphButtons" onclick="toggleGraph(id),createGraphs(ir)">IR</button>
+    </div>
+
+    <div id="etwas" style="padding-bottom: 70px;">
+        <canvas id="myChart" style="width: 80%; max-height: 0;"></canvas>
+    </div>
+
+    <center>
+        <div>
+            <br><br>
+            <h2>Debug</h2>
+            <h3>Laune</h3>
+            <select id="mood">
+                <option value="0">Zufrieden</option>
+                <option value="1">Kalt</option>
+                <option value="2">Warm</option>
+                <option value="3">Schlafen</option>
+                <option value="4">Wütend</option>
+                <option value="5">Traurig</option>
+            </select>
+        </div>
+    </center>
+
+
+    <!-- Footer -->
+
+    <footer class="row mt-5 mb-5">
+        <div class="col-lg-12">
+            <p class="text-center tm-text-gray tm-copyright-text mb-0">Mee Project Gruppe C
+            </p>
+        </div>
+    </footer>
+    <!-- .container -->
+
+    <script src="js/funktionen.js"></script>
+    <script src="js/buttons.js"></script>
+    <script src="js/availability.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <!-- <script src="js/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="js/templatemo-script.js"></script>
+</body>
+
+</html>

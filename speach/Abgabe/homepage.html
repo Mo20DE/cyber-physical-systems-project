@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Spracherkennung unter html und javascript</title>
+  </head>
+
+  <body>
+    <h1>Spracherkennung unter html und javascript</h1>
+    <p>Button drücken, um zu starten</p>
+
+    <table style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <th>
+            <h3>Wecker stellen</h3>
+            <input type="time" id="appt" name="appt">
+            <button id="AlarmStarten" class="aktiveButtons" onclick="">Senden</button>
+        </th>
+        <th>
+            <h3>Fahrsteuerung</h3>
+            <div style="padding-top: 10px;padding-left: 28px;">
+                <button id="Up" class="aktiveButtons">Vorwärts</button>
+            </div>
+            <div style="padding-top: 10px; padding-bottom: 10px;">
+                <button id="Left" class="aktiveButtons">Links</button>
+                <button id="Right" class="aktiveButtons">Rechts</button>
+            </div>
+            <div style="padding-bottom: 10px; padding-left: 22px;">
+                <button id="Down" class="aktiveButtons">Rückwärts</button>
+            </div>
+        </th>
+        <th>
+            <h3>Bildschirm anzeigen</h3>
+            <button id="DisplayMonopolyMan" class="aktiveButtons" onclick="">Monopoly-Man</button>
+            <button id="DisplayAlpaca" class="aktiveButtons" onclick="">Alpaka</button>
+            <button id="DisplayPanda" class="aktiveButtons" onclick="">Panda</button>
+        </th>
+        <th>
+            <h3>Sound abspielen</h3>
+            <button id="PlayPinkPanther" class="aktiveButtons" onclick="">Pink Panther</button>
+            <button id="PlayStarWars" class="aktiveButtons" onclick="">Star Wars</button>
+        </th>
+    </tr>
+	<tr>
+		<th colspan="4">
+			<button id="speach">Spracherkennung</button>
+			
+			<div>
+			<p class="result">-<p>
+			<p class="output">-</p>
+			
+			<script src="speach.js"></script>
+			</div>
+		</th>
+	</tr>
+</table>
+
+    <script src="speach.js"></script>
+  </body>
+</html>

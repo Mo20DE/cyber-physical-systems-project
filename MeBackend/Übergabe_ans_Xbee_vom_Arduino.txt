@@ -1,0 +1,49 @@
+Liste von Daten (Protokoll-Ebene)    
+    Ausgabe: Arduino ans XBEE
+
+    loops, button, temp,  humi,  range,  vis,  ir,  uv
+    int    bool    float  float  int     int   int  float
+
+Bsp:
+	//Ausgabe für debug
+	Temperature: 27.10°C
+	Humidity: 25.60%
+	Range: 218 cm
+	Vis: 264
+	IR: 274
+	UV: 0.04
+
+	//Ausgabe ans XBEE Kommunikatiosteam
+	0, 0, 27.10, 25.60, 218, 264, 274, 0.04
+	
+Bsp2:	
+	Temperature: 27.10°C
+	Humidity: 25.60%
+	Range: 218 cm
+	Vis: 264
+	IR: 283
+	UV: 0.04
+
+	//Ausgabe ans XBEE Kommunikationsteam
+	11, 0, 27.10, 25.60, 218, 265, 282, 0.04
+	
+Bsp3:	
+	Temperature: 27.10°C
+	Humidity: 25.70%
+	Range: 217 cm
+	Vis: 265
+	IR: 281
+	UV: 0.04
+
+	22, 0, 27.10, 25.70, 217, 265, 282, 0.04
+	
+Bsp4: 
+
+	Temperature: 27.20°C
+	Humidity: 26.90%
+	Range: 1 cm
+	Vis: 264
+	IR: 282
+	UV: 0.04
+
+	90, 0, 27.20, 26.90, 1, 265, 281, 0.04	

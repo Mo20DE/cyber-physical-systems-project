@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS `Sensordata` (
+	`id` INT NOT NULL UNIQUE AUTO_INCREMENT,
+	`timestamp` TIMESTAMP NOT NULL UNIQUE,
+	`button` BOOLEAN,
+	`temperature` FLOAT,
+	`humidity` FLOAT,
+	`range` INT,
+	`vis` INT,
+	`ir` INT,
+	`uv` INT
+);
+CREATE TABLE IF NOT EXISTS `MeFeelings` (
+	`id` INT NOT NULL UNIQUE AUTO_INCREMENT,
+	`timestamp` TIMESTAMP NOT NULL UNIQUE,
+	`energy` INT NOT NULL,
+	`happiness` INT NOT NULL,
+	`playful` INT NOT NULL,
+	`awake` BOOLEAN NOT NULL UNIQUE
+);
